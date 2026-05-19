@@ -1,0 +1,29 @@
+{
+  "name": "comprehension-audit",
+  "version": "1.0.0",
+  "description": "LLM-powered comprehension diagnostic with 8-dimension scoring and L1-L5 maturity band assignment",
+  "license": "MIT",
+  "scripts": {
+    "dev": "netlify dev",
+    "build": "astro build",
+    "validate-calibration": "ts-node --project tsconfig.scripts.json scripts/validate-calibration.ts",
+    "lint": "eslint src/",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.39.0",
+    "astro": "^4.15.0",
+    "@astrojs/react": "^3.6.0",
+    "@astrojs/tailwind": "^5.1.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "tailwindcss": "^3.4.13"
+  },
+  "devDependencies": {
+    "typescript": "^5.5.0",
+    "ts-node": "^10.9.0",
+    "@types/react": "^18.3.10",
+    "eslint": "^8.57.0",
+    "@netlify/functions": "^2.8.0"
+  }
+}
