@@ -2,14 +2,32 @@ import type { EmailProvider, ContactData } from '../../types';
 
 export type { EmailProvider, ContactData };
 
+/**
+ * Brevo (formerly Sendinblue) implementation of the EmailProvider interface.
+ *
+ * Upserts contacts via the Brevo v3 REST API and enforces a 30-day
+ * submission rate limit by inspecting the LITMUS_SUBMITTED_AT contact attribute.
+ */
 export class BrevoProvider implements EmailProvider {
   private apiKey: string;
   private baseUrl = 'https://api.brevo.com/v3';
 
+  /**
+   * @param apiKey - Brevo API key (typically from the BREVO_API_KEY env var).
+   */
   constructor(apiKey: string) {
     this.apiKey = apiKey;
   }
 
+  /**
+   * Creates or updates a contact in Brevo with LITMUS scoring attributes.
+   *
+   * Uses `updateEnabled: true` so existing contacts are patched rather than
+   * rejected. Silently swallows 429 rate-limit responses to avoid blocking
+   * the main pipeline.
+   *
+   * @param contact - Contact data including email, CRM attributes, and list IDs.
+   */
   async upsertContact(contact: ContactData): Promise<void> {
     let res: Response;
     try {
@@ -42,6 +60,15 @@ export class BrevoProvider implements EmailProvider {
     }
   }
 
+  /**
+   * Returns whether the email has already submitted within the 30-day rate-limit window.
+   *
+   * Looks up the contact by email and reads the LITMUS_SUBMITTED_AT attribute.
+   * Returns `{ limited: false }` on any network or API error to fail open.
+   *
+   * @param email - The submitter's email address.
+   * @returns `{ limited: true, message }` if within the window; `{ limited: false }` otherwise.
+   */
   async checkSubmissionLimit(email: string): Promise<{ limited: boolean; message?: string }> {
     let res: Response;
     try {
