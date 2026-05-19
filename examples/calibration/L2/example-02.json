@@ -1,0 +1,25 @@
+{
+  "band": "L2",
+  "input": {
+    "responses": [
+      "We built an AI system that generates first-draft job descriptions for our recruiting team. Recruiters input role title, level, and department, and the system produces a structured JD following our standard format. The goal was to cut the time recruiters spend on JD drafts from 45 minutes to under 10. The system knows our tone guidelines and the required sections for each job level.",
+      "We chose a prompt-based approach using a general LLM over a template system and a fine-tuned model. Templates were too rigid and produced JDs that felt mechanical. A fine-tuned model would have required labeled data we did not have. Prompt engineering let us iterate faster and incorporate style guidance in natural language.",
+      "If the system produces a poor JD, the recruiter still reviews it before it is published, which acts as a quality gate. We have not identified what patterns of failure would slip past a tired reviewer. Our fallback is simply writing JDs manually, which was the prior state, so the blast radius is contained to workflow slowdown.",
+      "We found that the model had biases in language that subtly favored certain candidate profiles. We caught this during an internal review and rewrote several prompts. We did not build a systematic audit process for bias and are not sure whether future prompts will reintroduce similar patterns."
+    ]
+  },
+  "expected_scores": {
+    "overall": 40,
+    "dimensions": {
+      "clarity_of_purpose": 2,
+      "boundary_definition": 2,
+      "tradeoff_articulation": 2,
+      "architectural_intentionality": 2,
+      "failure_mode_awareness": 2,
+      "blast_radius_articulation": 2,
+      "reflection_depth": 2,
+      "ai_override_evidence": 2
+    }
+  },
+  "rationale": "Uniform L2 profile. The system and users are described but without measurable outcomes. Each dimension shows surface awareness: two alternatives named without analysis, one failure mode acknowledged with a vague fallback, and reflection that identifies a problem without addressing root cause or process change."
+}

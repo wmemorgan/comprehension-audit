@@ -1,0 +1,25 @@
+{
+  "band": "L3",
+  "input": {
+    "responses": [
+      "We built an AI escalation classifier for our customer support platform. The system reads incoming support messages and determines whether they should be routed immediately to a senior support specialist or handled by the standard first-response queue. The specific trigger we are optimizing for is high-emotion language combined with account risk signals — customers who are expressing frustration and also have renewal dates within 90 days or have active contract negotiations. Before this system, escalation decisions were made by a first-response agent using judgment, resulting in inconsistent escalation rates across agents and estimated 15% of high-risk churns that were not escalated in time. The system has reduced non-escalated churn-risk cases by 40% over the first quarter.",
+      "We evaluated a rules-based classifier, a fine-tuned BERT-class model, and a few-shot LLM approach. The rules-based system was interpretable and easy to audit but missed nuanced emotional signals that required language understanding. The fine-tuned model had strong precision but required ongoing labeled data investment and retraining cycles that exceeded our ML team capacity. We chose the few-shot LLM approach because it performed within 5% of the fine-tuned model on our evaluation set without requiring labeled data pipelines. The tradeoff we accepted is higher per-inference cost and dependency on an external API, which creates both a cost ceiling and a reliability dependency on the provider.",
+      "The most significant failure mode is misclassification of a high-risk account as standard — a false negative that allows a churn-risk customer to wait in the standard queue. Our mitigation is a daily review of accounts with renewal dates within 30 days that were not escalated, which catches delayed cases before renewal. A secondary failure mode is alert fatigue from over-escalation — if precision degrades, senior specialists get flooded with false escalations and begin ignoring the routing. We have escalation rate monitoring but have not defined a precision threshold that triggers a model review.",
+      "The most important discovery was that the system's precision varied substantially by customer segment in ways that were not visible in aggregate metrics. Enterprise accounts were classified with high precision, but mid-market accounts — which had different emotional language patterns — showed 20% lower precision. We added segment-specific evaluation to our review process. The model confidently classified a set of messages from a customer who was using formal legal language as low-emotion, when the content was a pre-churn notice. We added legal-language pattern detection as an additional signal after catching this in a manual audit."
+    ]
+  },
+  "expected_scores": {
+    "overall": 63,
+    "dimensions": {
+      "clarity_of_purpose": 4,
+      "boundary_definition": 3,
+      "tradeoff_articulation": 3,
+      "architectural_intentionality": 3,
+      "failure_mode_awareness": 3,
+      "blast_radius_articulation": 3,
+      "reflection_depth": 3,
+      "ai_override_evidence": 3
+    }
+  },
+  "rationale": "Clarity earns 4 due to concrete business outcome (40% reduction in non-escalated churn-risk cases) with measurable baseline and stakeholder alignment (senior specialists). Other dimensions hold at 3 — three alternatives with real tradeoffs named, failure modes with mitigation but no monitoring thresholds, and reflection showing specific lessons without methodology change."
+}

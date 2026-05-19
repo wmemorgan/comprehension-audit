@@ -1,0 +1,25 @@
+{
+  "band": "L3",
+  "input": {
+    "responses": [
+      "We built an AI-powered code review assistant that integrates into our CI pipeline. When a pull request is opened, the system analyzes the diff and generates inline review comments focused on security vulnerabilities, performance anti-patterns, and deviations from our internal style guide. The problem this solves is that our engineering team has 3 reviewers who cover 8 services — code review was a bottleneck that delayed average PR merge time by 2.3 days. The AI system handles the first-pass review in under 90 seconds, and our reviewers now focus on architecture and logic rather than surface-level issues. Average merge time has dropped to 1.1 days.",
+      "We evaluated three implementation approaches: a retrieval-augmented system using our style guide and vulnerability database, a general-purpose LLM with a static system prompt, and a specialized code review model fine-tuned on our codebase history. We chose the RAG approach because it allowed us to keep our internal style guide and security policies as authoritative ground truth rather than encoding them in prompts. The general LLM approach produced useful comments but at a high false positive rate on our proprietary patterns. The fine-tuned model would have been the highest quality option but required labeled review data we did not have and a training infrastructure investment we could not justify for this use case.",
+      "The primary failure mode is a false negative on a security vulnerability — the system missing a real issue that then passes human review. Our mitigation is a quarterly red-team exercise where we introduce known vulnerability patterns and measure detection rate. A secondary failure mode is reviewer desensitization from noisy comments, which could cause humans to rubber-stamp reviews without reading them. We track comment acceptance rate as a proxy for relevance. We have not defined what comment acceptance rate would trigger a review of the model's prompts or retrieval corpus.",
+      "We discovered that the system performed well on standard patterns but poorly on our internal framework code, where it had no retrieval context. It was confidently suggesting refactors that would have broken our framework contracts — we caught this when a junior engineer nearly merged one during the pilot. We added our framework documentation to the retrieval corpus and introduced a confidence scoring step that suppresses comments below a threshold. We also changed our rollout approach to require a mandatory human review sign-off during the first month for any PR touching framework code."
+    ]
+  },
+  "expected_scores": {
+    "overall": 68,
+    "dimensions": {
+      "clarity_of_purpose": 4,
+      "boundary_definition": 3,
+      "tradeoff_articulation": 4,
+      "architectural_intentionality": 3,
+      "failure_mode_awareness": 3,
+      "blast_radius_articulation": 3,
+      "reflection_depth": 3,
+      "ai_override_evidence": 3
+    }
+  },
+  "rationale": "Upper boundary of L3. Clarity earns 4 (concrete outcome: 2.3 days to 1.1 days, specific stakeholder benefit). Tradeoff earns 4 (three alternatives with substantive tradeoffs and explicit naming of what was given up). Failure mode awareness stays at 3 — modes identified with mitigation but no threshold-based monitoring or recovery procedures."
+}

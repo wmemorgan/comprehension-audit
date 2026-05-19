@@ -1,0 +1,25 @@
+{
+  "band": "L1",
+  "input": {
+    "responses": [
+      "Our AI system helps the sales team by summarizing customer calls and generating follow-up email drafts. The sales team uses it after every customer call to reduce the time spent on post-call documentation. It connects to our CRM and stores the summaries automatically.",
+      "We picked this approach because the vendor offered a free trial and the integration was straightforward. We did not have time to evaluate alternatives. The team wanted something deployed quickly so we went with what was most accessible.",
+      "If the system goes down, the sales team would go back to writing notes manually. We have not mapped out failure scenarios in detail. We assume the vendor handles reliability on their end since we are using a SaaS product.",
+      "We discovered that AI writing can sound generic and sometimes needs editing. A few times the bot got details wrong in the summary and a rep had to fix it. We have not changed our process in response to these findings."
+    ]
+  },
+  "expected_scores": {
+    "overall": 23,
+    "dimensions": {
+      "clarity_of_purpose": 2,
+      "boundary_definition": 1,
+      "tradeoff_articulation": 1,
+      "architectural_intentionality": 1,
+      "failure_mode_awareness": 1,
+      "blast_radius_articulation": 1,
+      "reflection_depth": 1,
+      "ai_override_evidence": 1
+    }
+  },
+  "rationale": "Near-floor case. Clarity scores 2 because there is a named use case and identified users, but all other dimensions remain at 1. No alternatives considered, no architecture rationale, no failure analysis, no blast radius thinking, no systematic reflection."
+}

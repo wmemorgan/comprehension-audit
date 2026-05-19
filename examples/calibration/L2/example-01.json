@@ -1,0 +1,25 @@
+{
+  "band": "L2",
+  "input": {
+    "responses": [
+      "We built an AI triage system for our customer support queue. The system classifies incoming support tickets into five categories — billing, technical, account access, feature requests, and general — and routes them to the appropriate team. Before this, all tickets landed in a single shared inbox and agents manually sorted them, taking 20-40 minutes per shift just on triage. The system now handles classification in under 2 seconds per ticket and has reduced average time-to-first-response by 35%.",
+      "We used a fine-tuned classification model rather than a general-purpose LLM for this task. We considered using keyword routing rules and also evaluated a general LLM via API. Keyword rules were faster but too brittle for the variation in how customers describe issues. The general LLM was more flexible but added latency and cost per ticket. Fine-tuning gave us better accuracy on our specific categories with consistent low latency.",
+      "If the classifier fails or produces wrong categories, tickets get sent to the wrong team, adding delay. Our fallback is a catch-all general queue that agents monitor. We have not mapped out what proportion of tickets might be affected by a degraded model, and our monitoring currently only tracks whether the API is responding, not classification accuracy.",
+      "We learned that class imbalance in the training data caused the model to underperform on feature requests, which were rare in our historical data. We addressed this by oversampling but have not validated whether the fix held up in production. The AI suggested categories during labeling that we often overrode, but we did not document when or why."
+    ]
+  },
+  "expected_scores": {
+    "overall": 37,
+    "dimensions": {
+      "clarity_of_purpose": 3,
+      "boundary_definition": 2,
+      "tradeoff_articulation": 2,
+      "architectural_intentionality": 2,
+      "failure_mode_awareness": 1,
+      "blast_radius_articulation": 1,
+      "reflection_depth": 1,
+      "ai_override_evidence": 1
+    }
+  },
+  "rationale": "Functional description with a measurable outcome (35% time reduction) earns clarity=3. One alternative is named per dimension with surface tradeoffs. No failure mode depth, no blast radius analysis, and reflection does not connect to methodology changes."
+}

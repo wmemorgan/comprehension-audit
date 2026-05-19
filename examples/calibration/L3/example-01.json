@@ -1,0 +1,25 @@
+{
+  "band": "L3",
+  "input": {
+    "responses": [
+      "We built an AI-powered anomaly detection system for our e-commerce fulfillment pipeline. The system monitors order processing metrics — pick rate, pack rate, carrier handoff time, exception rate — and alerts operations managers when metrics deviate beyond expected thresholds. The problem it solves is that our prior alerting relied entirely on static thresholds, which generated too many false positives during seasonal peaks and too few alerts during off-peak hours when baselines shifted. The AI system learns seasonal patterns and adjusts thresholds dynamically, reducing false positive alert volume by 62% while maintaining the same incident detection rate over a 6-month evaluation period.",
+      "We evaluated three approaches for anomaly detection: statistical process control with dynamic baselines, an LSTM-based sequence model trained on historical metric data, and an isolation forest ensemble. We chose the isolation forest because it generalized better to new metric types without retraining, handled the mix of continuous and categorical features in our pipeline, and required no labeled anomaly data — which was expensive to produce given the rarity of actual incidents. The LSTM would have captured temporal patterns more richly but required significantly more labeled data and computational resources for real-time inference. Statistical SPC was simpler but failed to capture inter-metric correlations that help distinguish real incidents from noise.",
+      "The highest-risk failure mode is a false negative on a severity-1 incident — missing an anomaly that causes significant order delays or customer impact. Our mitigation is a fallback to static threshold alerts that run in parallel, which ensures critical thresholds are always monitored even if the AI model fails. A second failure mode is alert flooding if the model degrades and starts generating noise — this could desensitize operators. We do not yet have automated model performance monitoring that would catch a gradual degradation in detection precision before it becomes operationally visible.",
+      "We learned that the model's performance is sensitive to feature engineering choices that were not obvious upfront — specifically, which metrics to include and what rolling window to use for normalization. Early versions treated all metrics as independent, which missed correlated failures. We rebuilt the feature set to include metric ratios and lag features, which required revisiting our data pipeline. The model confidently flagged a batch of anomalies during a holiday period that were actually expected behavior from a campaign we had not informed the model about. We introduced a campaign calendar integration to handle this, but had to manually suppress 4 days of false alerts first."
+    ]
+  },
+  "expected_scores": {
+    "overall": 60,
+    "dimensions": {
+      "clarity_of_purpose": 3,
+      "boundary_definition": 3,
+      "tradeoff_articulation": 3,
+      "architectural_intentionality": 3,
+      "failure_mode_awareness": 3,
+      "blast_radius_articulation": 3,
+      "reflection_depth": 3,
+      "ai_override_evidence": 3
+    }
+  },
+  "rationale": "Uniform L3 profile. Strong purpose articulation with a measurable outcome (62% false positive reduction). Three alternatives named with substantive tradeoffs. Failure modes identified with mitigation strategies, but no monitoring or recovery procedures. Reflection shows specific lessons but does not connect to methodology changes."
+}

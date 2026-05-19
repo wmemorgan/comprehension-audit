@@ -1,0 +1,25 @@
+{
+  "band": "L1",
+  "input": {
+    "responses": [
+      "Our AI system monitors social media mentions and flags posts that may require a response from our communications team. It runs hourly scans and produces a prioritized list of mentions. The communications team reviews the list each morning and decides which ones to respond to.",
+      "We chose a hosted monitoring service with built-in AI classification rather than building a custom model. We also looked at a manual monitoring workflow but that was too slow given our volume. The service fit within our budget and had the features we needed.",
+      "If the service goes down we would miss mentions during the outage window. The main failure mode is that important posts get misclassified and fall through the cracks. We have a weekly review meeting where we catch obvious missed mentions, but we do not have automated monitoring of the classifier performance.",
+      "We found that the classifier struggles with sarcasm and industry-specific terminology. We have not systematically tuned the model or adjusted thresholds. The team manually reschedules missed ones when they are caught. We have not changed our approach based on these observations."
+    ]
+  },
+  "expected_scores": {
+    "overall": 26,
+    "dimensions": {
+      "clarity_of_purpose": 2,
+      "boundary_definition": 2,
+      "tradeoff_articulation": 1,
+      "architectural_intentionality": 1,
+      "failure_mode_awareness": 1,
+      "blast_radius_articulation": 1,
+      "reflection_depth": 1,
+      "ai_override_evidence": 1
+    }
+  },
+  "rationale": "Clarity and boundary both score 2 because there is a described workflow and identified users, but no specific outcomes. Tradeoff scores 1 despite mentioning an alternative because no actual tradeoff analysis is present. Failure modes are acknowledged but not analyzed."
+}

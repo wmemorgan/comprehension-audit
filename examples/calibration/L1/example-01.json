@@ -1,0 +1,25 @@
+{
+  "band": "L1",
+  "input": {
+    "responses": [
+      "We built an AI chatbot for internal support requests. It uses a language model to answer employee questions. The system is connected to our helpdesk platform and responds to tickets automatically. Employees submit questions and the bot replies with answers from a knowledge base.",
+      "We chose to use a cloud-based language model API because it was easy to integrate. We did not evaluate other approaches in depth. The setup was quick and the vendor had a good reputation in the market.",
+      "If the system fails, employees would need to contact the helpdesk manually. We have not done a detailed analysis of what could go wrong. The main risk is that the bot gives wrong answers, but we review escalations periodically.",
+      "We learned that AI tools can answer many common questions without human involvement. We did not have many situations where the AI produced wrong output that we caught. Overall it has been a useful addition to our support workflow."
+    ]
+  },
+  "expected_scores": {
+    "overall": 20,
+    "dimensions": {
+      "clarity_of_purpose": 1,
+      "boundary_definition": 1,
+      "tradeoff_articulation": 1,
+      "architectural_intentionality": 1,
+      "failure_mode_awareness": 1,
+      "blast_radius_articulation": 1,
+      "reflection_depth": 1,
+      "ai_override_evidence": 1
+    }
+  },
+  "rationale": "Absolute floor case. All dimensions score 1 — vague purpose, no boundaries, no alternatives considered, no architecture rationale, no failure mode analysis, no blast radius awareness, no genuine reflection, and no evidence of overriding AI output."
+}
