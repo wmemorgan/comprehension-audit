@@ -1,0 +1,25 @@
+{
+  "band": "L2",
+  "input": {
+    "responses": [
+      "We built an AI document review tool for our compliance team. The system reads uploaded vendor contracts and flags clauses that may conflict with our standard terms. Compliance analysts use it to accelerate the review of new vendor agreements. Previously analysts spent 2-3 hours per contract; the AI review takes under 5 minutes for flagging, leaving analysts to focus on the flagged clauses only.",
+      "We chose a RAG approach using our standard contract terms as the retrieval corpus over a pure classifier and a rules engine. The classifier required labeled training data we did not have at sufficient volume. The rules engine was brittle when vendors used non-standard clause language. RAG let us use our existing term documents as ground truth without additional labeling.",
+      "If the system misses a conflicting clause, it could go undetected until the contract is signed, which creates legal and financial risk. We require analysts to sign off on all flagged items and accept that missed items are a residual risk. We have not estimated the miss rate through validation testing against contracts with known conflicts.",
+      "We found that the retrieval step worked poorly on clauses written in highly formal legal language that differed structurally from our terms even when semantically similar. We adjusted the chunking strategy based on this observation. The model occasionally flagged clauses that were actually compliant, creating false positives that eroded analyst trust over time. We have not tracked the false positive rate systematically."
+    ]
+  },
+  "expected_scores": {
+    "overall": 44,
+    "dimensions": {
+      "clarity_of_purpose": 2,
+      "boundary_definition": 2,
+      "tradeoff_articulation": 3,
+      "architectural_intentionality": 2,
+      "failure_mode_awareness": 2,
+      "blast_radius_articulation": 2,
+      "reflection_depth": 2,
+      "ai_override_evidence": 2
+    }
+  },
+  "rationale": "Tradeoff earns 3 because three alternatives are named with cost/capability framing. Clarity stays at 2 because the purpose lacks specificity about what constitutes a conflict or what outcomes are targeted. Failure mode awareness is surface-level — risk is named but not quantified or mitigated."
+}

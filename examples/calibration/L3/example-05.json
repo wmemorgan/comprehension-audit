@@ -1,0 +1,25 @@
+{
+  "band": "L3",
+  "input": {
+    "responses": [
+      "We built an AI system for automated invoice data extraction at a mid-sized logistics company. The system processes PDF invoices from hundreds of carrier partners, extracts structured fields — carrier name, invoice number, shipment IDs, line items, amounts, and payment terms — and loads the data into our accounts payable platform for validation. The problem being solved is that AP clerks were spending 60% of their time on manual data entry from invoices, with an error rate of approximately 3.5%. The AI system processes invoices in under 10 seconds each, with a field-level accuracy rate of 97.2% on our validation set, freeing AP staff for exception handling and vendor relationship work.",
+      "We evaluated three approaches: a traditional OCR pipeline with rule-based field extraction, a fine-tuned document understanding model, and a general LLM with structured output. We rejected the traditional OCR approach because carrier invoice formats vary too much for rules to be maintainable across hundreds of templates. The fine-tuned document model had the highest accuracy on our evaluation set but required significant labeled data and retraining cycles for new carrier formats. We chose the LLM approach with structured output because it generalized to new formats without retraining and allowed us to add new carriers in hours rather than weeks. The explicit cost we accepted is higher per-document inference cost and occasional inconsistencies in how the model handles ambiguous formatting.",
+      "If the extraction produces errors that pass validation, incorrect amounts could be paid to carriers. Our primary safeguard is a human review queue for invoices where any extracted field confidence score falls below a threshold we set empirically. We have not determined what error rate in the high-confidence queue would trigger a model review. A secondary failure mode is that the model misidentifies the currency or applies incorrect conversion when carriers invoice in non-USD currencies. We added explicit currency detection instructions to the prompt after finding two examples of this in testing, but have not validated it against all the currencies our carriers use.",
+      "The most significant discovery was that the model's error rate on handwritten or partially handwritten invoices was 3x higher than on fully digital invoices, and these were not evenly distributed — certain carrier categories sent predominantly handwritten invoices. We had not stratified our evaluation set by invoice type and so the aggregate accuracy number was misleading. We rebuilt the evaluation framework to segment by invoice type and added a routing step that sends handwritten invoices to a separate human-review workflow. The model had been confidently extracting fields from handwritten invoices with no uncertainty signal, which was how the problem propagated for several weeks before we caught it through a discrepancy in account reconciliation."
+    ]
+  },
+  "expected_scores": {
+    "overall": 58,
+    "dimensions": {
+      "clarity_of_purpose": 4,
+      "boundary_definition": 2,
+      "tradeoff_articulation": 3,
+      "architectural_intentionality": 3,
+      "failure_mode_awareness": 3,
+      "blast_radius_articulation": 2,
+      "reflection_depth": 3,
+      "ai_override_evidence": 2
+    }
+  },
+  "rationale": "Clarity earns 4 (specific metric: 97.2% accuracy, 10-second processing, baseline 3.5% error rate). Boundary stays at 2 — scope of invoice types and carrier coverage is not defined. Blast radius scores 2 because impact (incorrect payments) is named but no containment or rollback strategy exists. Override evidence scores 2 because AI errors are described after-the-fact without real-time catch mechanisms."
+}

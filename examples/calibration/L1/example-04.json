@@ -1,0 +1,25 @@
+{
+  "band": "L1",
+  "input": {
+    "responses": [
+      "We built an AI assistant that helps our legal team search through contracts. Users type a question in natural language and the system returns relevant contract clauses. It connects to a document store and uses embeddings to find similar text passages.",
+      "We considered building a keyword search system instead of using embeddings, but decided that natural language queries would be easier for non-technical users. We did not evaluate the tradeoffs between keyword search and semantic search in any formal way.",
+      "If the system fails, legal staff would search contracts manually using file search tools. The risk of bad output is that users might miss relevant clauses. We have not analyzed what kinds of queries fail or designed mitigation for them.",
+      "We learned that the quality of retrieval depends heavily on how documents are chunked and indexed. We hit some cases where the model returned irrelevant passages confidently. We addressed this by adding a disclaimer to the output, but did not redesign the retrieval logic."
+    ]
+  },
+  "expected_scores": {
+    "overall": 28,
+    "dimensions": {
+      "clarity_of_purpose": 2,
+      "boundary_definition": 1,
+      "tradeoff_articulation": 2,
+      "architectural_intentionality": 1,
+      "failure_mode_awareness": 1,
+      "blast_radius_articulation": 1,
+      "reflection_depth": 1,
+      "ai_override_evidence": 1
+    }
+  },
+  "rationale": "Upper boundary of L1. Clarity scores 2 (named use case with identified users) and tradeoff scores 2 (one alternative named without analysis). The response shows surface awareness of problems but no architectural reasoning, failure-mode discipline, or genuine reflection."
+}

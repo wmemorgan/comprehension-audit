@@ -1,0 +1,25 @@
+{
+  "band": "L3",
+  "input": {
+    "responses": [
+      "We built an AI system that generates personalized onboarding email sequences for new users of our SaaS product. The system segments users by their signup source, trial behavior in the first 48 hours, and role type, then generates a customized 5-email sequence tailored to their context. The problem we were solving is that our single static onboarding sequence had a 23% completion rate and a 12% trial-to-paid conversion rate. Since launch, segmented sequences have improved completion to 41% and trial conversion to 18%.",
+      "We considered three approaches: static template personalization using merge tags, a rule-based decision tree for sequence selection, and an LLM-generated sequence with user context injection. We chose the LLM approach because it produced more natural-feeling language for edge-case user profiles that the template system handled poorly. The rule-based decision tree was interpretable and easy to audit but could not handle the combinatorial space of user profiles without becoming unmanageable. The tradeoff we accepted with the LLM approach is that sequence content is less deterministic and harder to audit for compliance with our messaging standards.",
+      "If the system generates inappropriate or off-brand content, it could be sent to thousands of users before being caught. Our safeguard is a rule-based filter that checks generated emails against a list of prohibited phrases and required disclosures. We have not run adversarial testing on the filter, and we do not know whether prompt injection through user-provided data during signup could influence the generated content.",
+      "We learned that personalization quality degrades significantly for user profiles with limited behavioral data — specifically, users who complete signup but do not explore the product in the first 24 hours. The AI had generated confident-sounding sequences for these users that turned out to be generic and performed poorly. We added a fallback to a static sequence for this segment rather than trying to personalize with insufficient signal. We caught the issue through cohort analysis three weeks after launch, not through model monitoring."
+    ]
+  },
+  "expected_scores": {
+    "overall": 55,
+    "dimensions": {
+      "clarity_of_purpose": 3,
+      "boundary_definition": 3,
+      "tradeoff_articulation": 3,
+      "architectural_intentionality": 3,
+      "failure_mode_awareness": 2,
+      "blast_radius_articulation": 2,
+      "reflection_depth": 3,
+      "ai_override_evidence": 2
+    }
+  },
+  "rationale": "Mid-L3 profile with weaker failure-mode and blast-radius dimensions. Failure mode awareness scores 2 because only one failure mode is named with a vague safeguard. Blast radius is acknowledged (thousands of users) but no containment strategy exists. Override evidence scores 2 because the AI confidence issue is described without explaining how it was caught or corrected in real time."
+}
