@@ -1,0 +1,25 @@
+{
+  "band": "L2",
+  "input": {
+    "responses": [
+      "We built an AI-powered pricing recommendation engine for our B2B sales team. Sales reps enter deal parameters — company size, industry, product mix, contract length — and the system suggests an opening price and a floor price. The system replaced a manual lookup process using spreadsheets. Before deployment, reps averaged 15 minutes per deal on pricing research; it is now under 2 minutes. Win rate has not changed significantly in the 6 months since launch.",
+      "We evaluated three approaches: a rules-based engine using historical deal data, a regression model trained on closed deals, and a retrieval-augmented system that pulls comparable past deals. We chose the regression model because it generalized better than rules and required less maintenance than the retrieval system. The retrieval approach would have been more explainable but required more infrastructure. The rules engine was faster but could not handle edge cases.",
+      "If the model recommends prices outside acceptable bounds, a rep could quote too low and reduce margin, or too high and lose the deal. We have a hard-coded floor and ceiling check as a guardrail. We have not analyzed what percentage of recommendations would fail the bounds check or what patterns of input cause outlier outputs.",
+      "We discovered that the model systematically underpriced deals in certain niche industries because those were underrepresented in training data. Reps in those verticals had been overriding recommendations frequently but did not report it. We found out during a quarterly review. We retrained with better coverage but have not put in place a feedback loop to catch similar gaps proactively."
+    ]
+  },
+  "expected_scores": {
+    "overall": 46,
+    "dimensions": {
+      "clarity_of_purpose": 3,
+      "boundary_definition": 3,
+      "tradeoff_articulation": 2,
+      "architectural_intentionality": 2,
+      "failure_mode_awareness": 2,
+      "blast_radius_articulation": 2,
+      "reflection_depth": 2,
+      "ai_override_evidence": 2
+    }
+  },
+  "rationale": "Clearer purpose and boundaries push clarity and boundary to 3 — measurable time reduction with defined inputs. Three alternatives are named but tradeoff analysis is surface-level (no quantification of what is given up). Failure modes are acknowledged but not analyzed with mitigation. Reflection identifies a structural problem without resolving it."
+}

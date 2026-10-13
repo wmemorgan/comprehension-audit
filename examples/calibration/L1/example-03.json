@@ -1,0 +1,25 @@
+{
+  "band": "L1",
+  "input": {
+    "responses": [
+      "We use an AI model to help our content team write product descriptions for our e-commerce platform. It generates draft descriptions that writers review and publish. The system uses a commercial API that we call from a simple internal tool the engineering team built.",
+      "We chose the model we use because it produces readable text and the pricing was acceptable for our volume. We briefly considered using open-source models but decided against it because we lacked the infrastructure expertise. No formal evaluation was done.",
+      "If the system fails, writers would produce descriptions manually, which would slow down catalog publishing. We have not thought carefully about edge cases or worst-case outputs. We rely on the writers to catch problems during their review step.",
+      "The main thing we learned is that AI-generated descriptions need a human review pass. We did not develop a systematic approach to catching AI errors beyond that. The team is generally satisfied with the quality but we have not measured it rigorously."
+    ]
+  },
+  "expected_scores": {
+    "overall": 24,
+    "dimensions": {
+      "clarity_of_purpose": 1,
+      "boundary_definition": 1,
+      "tradeoff_articulation": 2,
+      "architectural_intentionality": 1,
+      "failure_mode_awareness": 1,
+      "blast_radius_articulation": 1,
+      "reflection_depth": 1,
+      "ai_override_evidence": 1
+    }
+  },
+  "rationale": "Tradeoff scores 2 because one alternative (open-source) is named, but no tradeoff analysis was conducted. All other dimensions are at 1. The purpose description is vague with no specific outcomes, and there is no failure mode or reflection depth."
+}

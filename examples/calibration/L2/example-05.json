@@ -1,0 +1,25 @@
+{
+  "band": "L2",
+  "input": {
+    "responses": [
+      "We built an AI meeting summarizer that processes recorded sales calls and produces structured summaries in a standard format: attendees, key decisions, action items, and next steps. Sales managers use it to stay current on deal progress without attending every call. The system processes calls within 15 minutes of the recording ending and pushes summaries to the CRM automatically. Call review time for managers dropped from 45 minutes per day to under 10.",
+      "We evaluated a general-purpose transcription and summarization API versus building a pipeline with a specialized transcription model feeding into a summarization model. The API was faster to integrate but gave us less control over the output format. The two-model pipeline produced better structured output but required more operational overhead. We went with the API after adding a post-processing layer to enforce structure.",
+      "If the transcription quality is poor — for example, with heavy accents or poor audio — the summary will contain errors. Poor summaries could cause managers to miss commitments or misread deal status. We rely on the sales rep to flag errors they notice, but we have no automated quality check on summary accuracy.",
+      "We found that the model hallucinated action items in about 5% of summaries during initial testing — stating commitments that were never mentioned in the call. We added a prompt instruction to only include items explicitly stated, which reduced but did not eliminate the issue. We have not told managers about this residual risk or built any flagging for uncertain items."
+    ]
+  },
+  "expected_scores": {
+    "overall": 47,
+    "dimensions": {
+      "clarity_of_purpose": 3,
+      "boundary_definition": 2,
+      "tradeoff_articulation": 3,
+      "architectural_intentionality": 2,
+      "failure_mode_awareness": 2,
+      "blast_radius_articulation": 2,
+      "reflection_depth": 2,
+      "ai_override_evidence": 1
+    }
+  },
+  "rationale": "Clarity and tradeoff reach 3 — a specific use case with a measurable outcome, and two alternatives with real capability tradeoffs named. Override evidence drops to 1 because the model override is described as a prompt change, not as catching and correcting a specific AI mistake. Failure mode awareness is present but lacks mitigation strategy."
+}

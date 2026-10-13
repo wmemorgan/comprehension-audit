@@ -1,0 +1,90 @@
+{
+  "meta": {
+    "title": "AI Comprehension Audit",
+    "description": "A four-question diagnostic that scores enterprise AI project comprehension across 8 weighted dimensions, maps to L1-L5 maturity bands, and delivers a detailed comprehension report.",
+    "timeEstimate": "10 minutes"
+  },
+  "intro": {
+    "sectionLabel": "Comprehension Audit",
+    "headline": "Do You Actually Understand What You Built?",
+    "headlineHighlight": "Actually Understand",
+    "subtext": "Most enterprise AI teams can describe what their system does. Few can articulate why it was built that way, what would break it, or what they learned from building it. This audit measures the difference.",
+    "details": [
+      "Four questions. Ten minutes. No multiple choice.",
+      "Your responses are scored across 8 dimensions of comprehension — from clarity of purpose through failure-mode awareness to AI override evidence.",
+      "You receive a maturity band (L1-L5), a per-dimension breakdown, and a comprehension report delivered to your inbox."
+    ],
+    "cta": "Begin the Audit"
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "number": 1,
+      "title": "What is this?",
+      "prompt": "Describe the AI project in plain language. What does it do? Who uses it? What problem does it solve that wasn't being solved before? Be specific — \"a chatbot for customer support\" is too generic; \"an escalation-aware support agent that routes high-emotion conversations to humans within 90 seconds\" is the right shape.",
+      "minChars": 200,
+      "maxChars": 4000
+    },
+    {
+      "id": "q2",
+      "number": 2,
+      "title": "Why this approach?",
+      "prompt": "What architectural choices did you make, and what alternatives did you consider and reject? Name at least two alternatives. For each one, describe what you would have lost or gained by choosing it instead.",
+      "minChars": 200,
+      "maxChars": 4000
+    },
+    {
+      "id": "q3",
+      "number": 3,
+      "title": "What would break?",
+      "prompt": "What is the blast radius if this system fails? What assumptions are load-bearing — meaning, if those assumptions stop being true, the system stops working? What's the worst output your system could produce, and what would it take to catch it before a user sees it?",
+      "minChars": 200,
+      "maxChars": 4000
+    },
+    {
+      "id": "q4",
+      "number": 4,
+      "title": "What did you learn?",
+      "prompt": "What did you discover during the build that changed how you think about this kind of system? Where did the AI tools confidently produce something wrong, and how did you catch it? If you were starting over, what would you do differently?",
+      "minChars": 200,
+      "maxChars": 4000
+    }
+  ],
+  "dimensions": {
+    "clarity_of_purpose": "Clarity of Purpose",
+    "boundary_definition": "Boundary Definition",
+    "tradeoff_articulation": "Tradeoff Analysis",
+    "architectural_intentionality": "Architectural Intent",
+    "failure_mode_awareness": "Failure Mode Awareness",
+    "blast_radius_articulation": "Blast Radius Awareness",
+    "reflection_depth": "Reflection Depth",
+    "ai_override_evidence": "AI Override Evidence"
+  },
+  "maturityBands": {
+    "L1": {
+      "name": "Assisted",
+      "oneLiner": "Working with AI tools but not yet auditing the output",
+      "description": "Your responses indicate early-stage engagement with AI systems. You can describe what the system does at a surface level, but the architectural reasoning, failure-mode discipline, and reflection depth that distinguish production-grade comprehension are not yet visible. This is a common starting point — most teams begin here. The path forward is structured: articulate not just what you built, but why you built it that way, what you rejected, and what would break."
+    },
+    "L2": {
+      "name": "Augmented",
+      "oneLiner": "Describes outputs but not architectural intent",
+      "description": "You demonstrate functional understanding of your AI system — you can describe its behavior and outputs clearly. What is missing is the layer beneath: architectural intentionality, tradeoff articulation, and the discipline of naming what you chose not to build. Teams at L2 often have working systems but struggle to explain why the system is designed the way it is, which creates risk when the system needs to evolve or when assumptions change."
+    },
+    "L3": {
+      "name": "Supervised Automation",
+      "oneLiner": "Articulates intent and tradeoffs but lacks failure-mode discipline",
+      "description": "Strong comprehension across purpose, architecture, and tradeoff analysis. You can articulate what you built, why you built it that way, and what alternatives you considered. The gap is in failure-mode awareness and blast-radius thinking — the discipline of naming what would break, how bad it would be, and what you would do about it. This is the most common band for experienced practitioners. Closing the gap requires systematic failure-mode analysis, not just more building."
+    },
+    "L4": {
+      "name": "Autonomous with Exception Handling",
+      "oneLiner": "Full comprehension across all dimensions",
+      "description": "Comprehensive understanding across all eight dimensions. You articulate purpose, architecture, tradeoffs, failure modes, and blast radius with specificity and depth. Your reflection shows genuine learning from the build process. The remaining growth area is AI override evidence — the ability to identify where AI tools produced confident but incorrect output and document how you caught and corrected it. This is the threshold for autonomous operation."
+    },
+    "L5": {
+      "name": "Fully Autonomous",
+      "oneLiner": "Principal-tier comprehension including failure-mode and AI-override evidence",
+      "description": "Principal-tier comprehension. You demonstrate mastery across every dimension including the hardest one: AI override evidence. You can identify where AI tools confidently produced wrong output, explain how you caught it, and describe what you would do differently. This level of comprehension is rare and indicates the discipline required to operate AI systems autonomously in production — not because the AI is perfect, but because you know exactly where it is not."
+    }
+  }
+}
