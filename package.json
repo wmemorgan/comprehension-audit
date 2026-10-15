@@ -1,6 +1,6 @@
 {
   "name": "comprehension-audit",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "LLM-powered comprehension diagnostic with 8-dimension scoring and L1-L5 maturity band assignment",
   "license": "MIT",
   "engines": {

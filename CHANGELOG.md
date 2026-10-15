@@ -6,6 +6,8 @@ All notable changes to this project are documented here. The format is based on
 
 ## [Unreleased]
 
+## [1.1.0] — 2026-10-15
+
 ### Fixed
 
 - The `/api/audit-submit` function returned every response as HTTP 200 with the real response
@@ -49,5 +51,6 @@ Initial public release.
 - Netlify Function endpoint at `/api/audit-submit`.
 - 25 calibration examples (5 per band) and `npm run validate-calibration`.
 
-[Unreleased]: https://github.com/wmemorgan/comprehension-audit/compare/4f8942f...main
-[1.0.0]: https://github.com/wmemorgan/comprehension-audit/tree/4f8942f
+[Unreleased]: https://github.com/wmemorgan/comprehension-audit/compare/v1.1.0...main
+[1.1.0]: https://github.com/wmemorgan/comprehension-audit/compare/v1.0.0...v1.1.0
+[1.0.0]: https://github.com/wmemorgan/comprehension-audit/releases/tag/v1.0.0
