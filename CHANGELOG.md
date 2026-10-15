@@ -18,10 +18,19 @@ All notable changes to this project are documented here. The format is based on
   `BREVO_LIST_ID_MID`, and `BREVO_LIST_ID_HIGH`, and `LLM_MODEL` is optional (default
   `claude-sonnet-4-6`).
 
+### Changed
+
+- Upgraded to Astro 7 (`astro` 7.3, `@astrojs/react` 7) and Tailwind CSS 4 through the official
+  `@tailwindcss/vite` plugin, replacing the deprecated `@astrojs/tailwind` integration. This clears
+  all `npm audit` findings (21 before: 1 critical, 9 high, 11 moderate).
+- `src/styles/global.css` keeps the Tailwind v3 font stack, colour values, and base styles, so the
+  page renders the same as before the upgrade.
+- Node.js 22.12 or later is required (Astro 7).
+
 ### Added
 
 - `SECURITY.md` with private vulnerability reporting.
-- Node.js 22 or later is required (`engines`, `.nvmrc`). CI runs on Node 22 and 24.
+- CI runs on Node 22 and 24 (`.nvmrc` selects Node 22).
 
 ## [1.0.0] — 2026-10-13
 

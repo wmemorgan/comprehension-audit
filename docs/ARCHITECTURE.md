@@ -135,7 +135,7 @@ The audit endpoint runs as a single Netlify Function at `/.netlify/functions/aud
 
 **Local development:**
 
-Requires Node.js 22 or later and the Netlify CLI (`npm install -g netlify-cli`).
+Requires Node.js 22.12 or later and the Netlify CLI (`npm install -g netlify-cli`).
 
 ```bash
 npm install

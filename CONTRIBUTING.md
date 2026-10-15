@@ -6,14 +6,14 @@ tooling.
 
 ## Getting Started
 
-Prerequisites: Node.js 22 or later, and the Netlify CLI (`npm install -g netlify-cli`).
+Prerequisites: Node.js 22.12 or later, and the Netlify CLI (`npm install -g netlify-cli`).
 
 1. Fork the repository
 2. Clone your fork: `git clone https://github.com/YOUR-USERNAME/comprehension-audit.git`
 3. Install dependencies: `npm install`
 4. Copy environment config: `cp .env.example .env`
 5. Add your Anthropic API key to `.env`
-6. Start development: `npm run dev`
+6. Start development: `npm run dev`, then open `http://localhost:8888/comprehension-audit`
 
 ## Development Workflow
 

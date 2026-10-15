@@ -290,7 +290,7 @@ function IntroState({
       <div className="space-y-4 mb-10">
         {intro.details.map((detail, i) => (
           <div key={i} className="flex items-start gap-3">
-            <span className="mt-2 flex-shrink-0 w-1 h-1 rounded-full bg-amber-400/60" />
+            <span className="mt-2 shrink-0 w-1 h-1 rounded-full bg-amber-400/60" />
             <p className="text-slate-300" style={{ fontSize: "0.9375rem", lineHeight: "1.7" }}>
               {detail}
             </p>
@@ -382,7 +382,7 @@ function QuestionState({
           rows={8}
           className={`w-full bg-slate-900/50 border rounded-lg px-4 py-3 text-slate-100
             text-base leading-relaxed resize-y transition-colors duration-200
-            placeholder:text-slate-600 focus:outline-none
+            placeholder:text-slate-600 focus:outline-hidden
             ${error ? "border-red-500/50 focus:border-red-400" : "border-amber-400/20 focus:border-amber-400/60"}
           `}
           style={{ minHeight: "200px" }}
@@ -403,7 +403,7 @@ function QuestionState({
         ) : (
           <span />
         )}
-        <span className={`font-mono text-xs ${charColor} ml-auto flex-shrink-0`}>
+        <span className={`font-mono text-xs ${charColor} ml-auto shrink-0`}>
           {answer.length.toLocaleString()} / {q.maxChars.toLocaleString()} characters
           {answer.length < q.minChars && (
             <span className="text-slate-600 ml-1">
@@ -506,7 +506,7 @@ function EmailState({
           autoComplete="email"
           className={`w-full bg-slate-900/50 border rounded-lg px-4 py-3 text-slate-100
             text-base transition-colors duration-200
-            placeholder:text-slate-600 focus:outline-none
+            placeholder:text-slate-600 focus:outline-hidden
             ${emailError ? "border-red-500/50 focus:border-red-400" : "border-amber-400/20 focus:border-amber-400/60"}
           `}
           aria-label="Email address"
@@ -648,7 +648,7 @@ function ResultState({
             {strongestLabel}
           </p>
           <div className="mt-3 flex items-center gap-2">
-            <div className="w-2 h-2 rounded-full bg-amber-400 flex-shrink-0" />
+            <div className="w-2 h-2 rounded-full bg-amber-400 shrink-0" />
             <span className="font-mono text-xs text-slate-400">
               Score: {((result.dimension_breakdown[result.strongest_dimension] ?? 0) * 100).toFixed(1)}%
             </span>
@@ -663,7 +663,7 @@ function ResultState({
             {weakestLabel}
           </p>
           <div className="mt-3 flex items-center gap-2">
-            <div className="w-2 h-2 rounded-full bg-sky-400 flex-shrink-0" />
+            <div className="w-2 h-2 rounded-full bg-sky-400 shrink-0" />
             <span className="font-mono text-xs text-slate-400">
               Score: {((result.dimension_breakdown[result.weakest_dimension] ?? 0) * 100).toFixed(1)}%
             </span>
@@ -683,7 +683,7 @@ function ResultState({
 
       <div className="flex items-start gap-3 px-4 py-3 bg-amber-400/5 border border-amber-400/20 rounded-lg">
         <svg
-          className="flex-shrink-0 mt-0.5"
+          className="shrink-0 mt-0.5"
           width="14"
           height="14"
           viewBox="0 0 16 16"

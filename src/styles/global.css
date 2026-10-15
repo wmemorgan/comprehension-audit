@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+/*
+ * Keep the Tailwind CSS v3 font stack and colour values for the colours this site uses, so the
+ * upgrade to Tailwind v4 does not change how the page looks.
+ */
+@theme {
+  --font-sans: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol", "Noto Color Emoji";
+
+  --color-red-400: #f87171;
+  --color-red-500: #ef4444;
+  --color-amber-300: #fcd34d;
+  --color-amber-400: #fbbf24;
+  --color-sky-400: #38bdf8;
+  --color-slate-100: #f1f5f9;
+  --color-slate-200: #e2e8f0;
+  --color-slate-300: #cbd5e1;
+  --color-slate-400: #94a3b8;
+  --color-slate-500: #64748b;
+  --color-slate-600: #475569;
+  --color-slate-700: #334155;
+  --color-slate-800: #1e293b;
+  --color-slate-900: #0f172a;
+  --color-gray-50: #f9fafb;
+  --color-gray-200: #e5e7eb;
+  --color-gray-400: #9ca3af;
+}
+
+/*
+ * Tailwind CSS v3 compatibility. Tailwind v4 changed these defaults; the rules below keep the
+ * v3 look and behaviour (from the official Tailwind v4 upgrade guide).
+ */
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    color: var(--color-gray-400);
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+}

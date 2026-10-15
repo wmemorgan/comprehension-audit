@@ -28,7 +28,7 @@ Input → Sanitization → Judge (dual-run LLM) → Scoring → Band Assignment
 
 ## Quick Start
 
-Prerequisites: Node.js 22 or later, and the Netlify CLI (`npm install -g netlify-cli`), which
+Prerequisites: Node.js 22.12 or later, and the Netlify CLI (`npm install -g netlify-cli`), which
 runs the site and the scoring function together.
 
 ```bash
