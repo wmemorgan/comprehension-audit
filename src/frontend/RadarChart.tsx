@@ -157,7 +157,7 @@ export default function RadarChart({
 
         const label = dimensionLabels[key] ?? key;
         const words = label.split(" ");
-        let line1 = "";
+        let line1: string;
         let line2 = "";
         if (label.length > 14 && words.length > 1) {
           const mid = Math.ceil(words.length / 2);

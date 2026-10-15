@@ -6,6 +6,8 @@ tooling.
 
 ## Getting Started
 
+Prerequisites: Node.js 22 or later, and the Netlify CLI (`npm install -g netlify-cli`).
+
 1. Fork the repository
 2. Clone your fork: `git clone https://github.com/YOUR-USERNAME/comprehension-audit.git`
 3. Install dependencies: `npm install`
@@ -18,6 +20,7 @@ tooling.
 - Create a feature branch from `main`
 - Make your changes with clear, atomic commits
 - Run type checking: `npm run type-check`
+- Run the linter: `npm run lint`
 - Run calibration validation: `npm run validate-calibration`
 - Submit a pull request with a clear description
 
@@ -42,7 +45,7 @@ If you add or modify calibration examples:
 
 - Use GitHub Issues for bug reports and feature requests
 - Include reproduction steps for bugs
-- For security vulnerabilities, email security@example.com
+- For security vulnerabilities, do not open a public issue. Follow [SECURITY.md](SECURITY.md).
 
 ## License
 

@@ -195,7 +195,7 @@ export default function ComprehensionAudit() {
         setUxState("email");
       } else if (res.status === 400) {
         const data = await res.json().catch(() => ({}));
-        setApiError(data?.message ?? "There was a problem with your submission. Please review your responses.");
+        setApiError(data?.error ?? data?.message ?? "There was a problem with your submission. Please review your responses.");
         setUxState("email");
       } else {
         setApiError("Something went wrong on our end. Please try again in a moment.");

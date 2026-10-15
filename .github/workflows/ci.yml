@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [18, 20]
+        node-version: [22, 24]
 
     steps:
       - uses: actions/checkout@v4
@@ -28,6 +28,9 @@ jobs:
       - name: Type check
         run: npm run type-check
 
+      - name: Lint
+        run: npm run lint
+
       - name: Validate calibration
         run: npm run validate-calibration
 
@@ -35,4 +38,3 @@ jobs:
         run: npm run build
         env:
           LLM_API_KEY: test-placeholder
-          LLM_MODEL: claude-sonnet-4-20250514

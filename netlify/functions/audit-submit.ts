@@ -31,18 +31,20 @@ export const handler: Handler = async (event) => {
     return { statusCode: 405, body: 'Method not allowed' };
   }
 
+  let input: unknown;
   try {
-    const input = JSON.parse(event.body || '{}');
-    const result = await pipeline.processSubmission(input);
-
+    input = JSON.parse(event.body || '{}');
+  } catch {
     return {
-      statusCode: 200,
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': process.env.ALLOWED_ORIGIN || '*',
-      },
-      body: JSON.stringify(result),
+      statusCode: 400,
+      headers: { ...pipeline.corsHeaders, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ error: 'Request body must be valid JSON' }),
     };
+  }
+
+  try {
+    // processSubmission already returns a complete response (status, headers, JSON body).
+    return await pipeline.processSubmission(input);
   } catch (error) {
     console.error('Audit submission error:', error);
     return {

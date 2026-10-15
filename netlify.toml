@@ -10,3 +10,11 @@
   from = "/api/audit-submit"
   to = "/.netlify/functions/audit-submit"
   status = 200
+
+# Local development (`npm run dev` runs `netlify dev`). Astro binds to IPv4 so the Netlify CLI
+# finds the framework port on every OS (some resolve `localhost` to IPv6 only).
+[dev]
+  framework = "#custom"
+  command = "npx astro dev --host 127.0.0.1 --port 4321"
+  targetPort = 4321
+  port = 8888

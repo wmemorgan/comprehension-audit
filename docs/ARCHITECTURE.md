@@ -125,7 +125,9 @@ The audit endpoint runs as a single Netlify Function at `/.netlify/functions/aud
 | `LLM_API_KEY` | Yes | API key for the LLM provider |
 | `LLM_MODEL` | No | Model identifier (default: `claude-sonnet-4-6`) |
 | `EMAIL_API_KEY` | No | API key for the email provider |
-| `EMAIL_LIST_IDS` | No | Comma-separated list IDs for contact upsert |
+| `BREVO_LIST_ID_LOW` | No | Email-provider list ID for L1–L2 results |
+| `BREVO_LIST_ID_MID` | No | Email-provider list ID for L3 results |
+| `BREVO_LIST_ID_HIGH` | No | Email-provider list ID for L4–L5 results |
 | `PIPELINE_WEBHOOK_URL` | No | Webhook endpoint for pipeline notifications |
 | `REPORT_BASE_URL` | No | Base URL prepended to per-submission report links |
 | `PUBLIC_AUDIT_API_URL` | No | Frontend API path (default: `/api/audit-submit`) |
@@ -133,10 +135,12 @@ The audit endpoint runs as a single Netlify Function at `/.netlify/functions/aud
 
 **Local development:**
 
+Requires Node.js 22 or later and the Netlify CLI (`npm install -g netlify-cli`).
+
 ```bash
 npm install
 cp .env.example .env  # fill in LLM_API_KEY at minimum
-netlify dev           # starts function server + frontend proxy
+npm run dev           # runs `netlify dev`: function server + frontend proxy on :8888
 ```
 
 The frontend dev server proxies `/api/audit-submit` to the local Netlify Functions runtime. No separate function process is needed.
@@ -156,7 +160,7 @@ Calibration examples live in `examples/calibration/{L1,L2,L3,L4,L5}/`. Each file
 To validate scoring consistency:
 
 ```bash
-npx ts-node scripts/validate-calibration.ts
+npm run validate-calibration
 ```
 
 The script runs each example's expected dimension scores through `computeScores`, compares the computed overall score to the expected value, and reports any example where the delta exceeds ±3 points or the assigned band does not match.

@@ -28,6 +28,9 @@ Input → Sanitization → Judge (dual-run LLM) → Scoring → Band Assignment
 
 ## Quick Start
 
+Prerequisites: Node.js 22 or later, and the Netlify CLI (`npm install -g netlify-cli`), which
+runs the site and the scoring function together.
+
 ```bash
 git clone https://github.com/wmemorgan/comprehension-audit.git
 cd comprehension-audit
@@ -156,9 +159,11 @@ An example passes if its computed overall score is within ±3 points of the decl
 | Variable | Required | Description |
 |----------|----------|-------------|
 | `LLM_API_KEY` | Yes | Anthropic API key |
-| `LLM_MODEL` | Yes | Claude model ID (e.g., `claude-sonnet-4-20250514`) |
+| `LLM_MODEL` | No | Claude model ID (default: `claude-sonnet-4-6`) |
 | `EMAIL_API_KEY` | No | Brevo API key; omit to skip email integration |
-| `EMAIL_LIST_IDS` | No | Comma-separated Brevo list IDs for band-specific sequences |
+| `BREVO_LIST_ID_LOW` | No | Brevo list ID for L1–L2 results |
+| `BREVO_LIST_ID_MID` | No | Brevo list ID for L3 results |
+| `BREVO_LIST_ID_HIGH` | No | Brevo list ID for L4–L5 results |
 | `PIPELINE_WEBHOOK_URL` | No | Webhook endpoint for post-scoring notifications |
 | `REPORT_BASE_URL` | No | Base URL for per-submission report links |
 | `PUBLIC_AUDIT_API_URL` | No | Frontend API endpoint (default: `/api/audit-submit`) |
